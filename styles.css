@@ -8,7 +8,6 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    background-image: url('https://picsum.photos/1600/900?blur=1&random=1.jpg');
 }
 .container {
     background: black;
@@ -22,7 +21,7 @@ body {
 }
 .search {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .search-btn {
@@ -36,7 +35,6 @@ body {
 .search-bar {
     border:none;
     outline: none;
-    padding: 0.6em;
     border-radius: 18px;
     color:black;
     font-family: inherit;
@@ -63,4 +61,21 @@ body {
   position: absolute;
   top: 0;
   left: 20px;
+}
+
+.select {
+    width: 10em;
+    border:none;
+    outline: none;
+    padding: 0.6em;
+    border-radius: 18px;
+    color:black;
+    font-family: inherit;
+    padding: 0.5em 1em;
+}
+
+#label {
+    display: block;
+    font-size: 0.8em;
+    margin-bottom: 0.3em;
 }
