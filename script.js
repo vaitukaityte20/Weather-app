@@ -53,11 +53,13 @@ let weather = {
   },
 
   displayWeather: function (data) {
-    const { name } = data;
+    const { name, timezone } = data;
     updateBackground(name);
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
+
+    
 
     document.querySelector(".city").innerText = "Weather in " + name;
     document.querySelector(".icon").src =
@@ -70,12 +72,15 @@ let weather = {
       "Humidity: " + humidity + "%";
     document.querySelector(".wind").innerText =
       "Wind speed: " + speed + " km/h";
-
+    document.querySelector(".timezone").innerText = "Time now: " + getLocalTime(timezone);
     document.querySelector(".weather").classList.remove("loading");
   },
 
   search: function () {
     this.fetchWeather(document.querySelector(".search-bar").value.trim());
+    if (!zipRegex.test(input.value)) {
+    countrySelect.value = ""; 
+  }
   },
 };
 
@@ -177,4 +182,10 @@ async function updateBackground(city) {
   document.body.style.backgroundImage = `url('${imageUrl}')`;
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
+}
+
+function getLocalTime(timezone) {
+  const utcTime = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+  const localTime = new Date(utcTime + timezone * 1000);
+  return localTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
