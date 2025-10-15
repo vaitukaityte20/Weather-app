@@ -1,0 +1,66 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    background-image: url('https://picsum.photos/1600/900?blur=1&random=1.jpg');
+}
+.container {
+    background: black;
+    color: white;
+    opacity: 0.8;
+    padding: 2em;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin: 1em;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-btn {
+    margin: 0.4em;
+    border-radius: 35px;
+    width: 2.5em;
+    height: 2.5em;
+    border: none;
+    outline: none;
+}
+.search-bar {
+    border:none;
+    outline: none;
+    padding: 0.6em;
+    border-radius: 18px;
+    color:black;
+    font-family: inherit;
+    padding: 0.5em 1em;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.feeling {
+    margin-left: 1.5em;
+    font-size: 15px;
+}
+.weather.loading {
+  visibility: hidden;
+  max-height: 20px;
+  position: relative;
+}
+
+.weather.loading:after {
+  visibility: visible;
+  content: "Loading...";
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
