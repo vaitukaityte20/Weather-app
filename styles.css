@@ -1,23 +1,32 @@
+*{
+    box-sizing: border-box;
+}
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 100%;
+    margin: 16px;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
-.container {
+.weather {
     background: black;
     color: white;
     opacity: 0.8;
     padding: 2em;
     border-radius: 40px;
     width: 100%;
-    max-width: 400px;
+    align-items: center;
     margin: 1em;
+    border: 3px solid red;  
+}
+.location-and-date {
+  width: 100%;
+}
+.city {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 600;
 }
 .search {
     display: flex;
@@ -40,14 +49,7 @@ body {
     font-family: inherit;
     padding: 0.5em 1em;
 }
-.flex {
-  display: flex;
-  align-items: center;
-}
-.feeling {
-    margin-left: 1.5em;
-    font-size: 15px;
-}
+
 .weather.loading {
   visibility: hidden;
   max-height: 20px;
@@ -79,3 +81,87 @@ body {
     font-size: 0.8em;
     margin-bottom: 0.3em;
 }
+.main-container {  
+  display: flex;  
+  flex-wrap: wrap;  
+}  
+.hourly-weather {
+    width: 100%;
+}
+.daily-weather {
+    width: 100%;
+}
+.current-temperature {  
+  display: flex;  
+  justify-content: space-evenly;  
+  border: 3px solid red;  
+}  
+.current-temperature-container {  
+  display: flex;  
+  margin-top: 0.25em;   
+  border: 3px solid red;  
+}  
+.icon-container {    
+  text-align: center;  
+  border: 3px solid red;  
+}  
+content-container {  
+  text-align: center;  
+  border: 3px solid white;  
+}  
+  
+.icon {  
+  width: 6em;  
+  border: 3px solid red; 
+  
+}  
+.temp {  
+  font-size: 5em;  
+  font-weight: 300;  
+}  
+  
+.description {  
+  font-size: 1.125em; 
+  border: 3px solid red;   
+}
+.current-stats {  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  width: 100%;
+  margin-top: 1em;
+}  
+
+@media screen and (min-width: 768px) {
+  .hourly-weather {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .temp,
+  .current-stats {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .main-container {
+    width: 1120px;
+    margin: 16px auto;
+    font-size: 1.1em;
+  }
+}
+.stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-description {
+    font-size: 0.9em;
+}
+.stat {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 0.25em;
+}
+
+.current-stats:

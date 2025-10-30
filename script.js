@@ -56,22 +56,56 @@ let weather = {
     const { name, timezone } = data;
     updateBackground(name);
     const { icon, description } = data.weather[0];
-    const { temp, humidity, feels_like } = data.main;
-    const { speed } = data.wind;
-
+    let { temp, humidity, feels_like, temp_min, temp_max } = data.main;
+    temp = Math.ceil(temp * 10) / 10;
+    feels_like = Math.ceil(feels_like * 10) / 10;
+    temp_min = Math.ceil(temp_min * 10) / 10;
+    temp_max = Math.ceil(temp_max * 10) / 10;
+    let { speed } = data.wind;
+    speed = Math.ceil(speed * 10) / 10;
+    const { all } = data.clouds;
     
 
-    document.querySelector(".city").innerText = "Weather in " + name;
+    document.querySelector(".city").innerText = name;
     document.querySelector(".icon").src =
       "https://openweathermap.org/img/wn/" + icon + ".png";
     document.querySelector(".description").innerText = description;
     document.querySelector(".temp").innerText = temp + "°C";
-    document.querySelector(".feeling").innerText =
-      "Feels like: " + feels_like + "°C";
-    document.querySelector(".humidity").innerText =
-      "Humidity: " + humidity + "%";
-    document.querySelector(".wind").innerText =
-      "Wind speed: " + speed + " km/h";
+    document.querySelector(".temp-min").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">14°C</span>
+    <span class="stat-description">Low</span>
+  </div>`;
+
+document.querySelector(".temp-max").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">22°C</span>
+    <span class="stat-description">High</span>
+  </div>`;
+
+document.querySelector(".feeling").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">20°C</span>
+    <span class="stat-description">Feels Like</span>
+  </div>`;
+
+document.querySelector(".humidity").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">68%</span>
+    <span class="stat-description">Humidity</span>
+  </div>`;
+
+document.querySelector(".wind").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">15 km/h</span>
+    <span class="stat-description">Wind Speed</span>
+  </div>`;
+
+document.querySelector(".clouds").innerHTML = `
+  <div class="stat-container">
+    <span class="stat">40%</span>
+    <span class="stat-description">Cloudiness</span>
+  </div>`;
     document.querySelector(".timezone").innerText = "Time now: " + getLocalTime(timezone);
     document.querySelector(".weather").classList.remove("loading");
   },
