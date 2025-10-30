@@ -71,41 +71,12 @@ let weather = {
       "https://openweathermap.org/img/wn/" + icon + ".png";
     document.querySelector(".description").innerText = description;
     document.querySelector(".temp").innerText = temp + "°C";
-    document.querySelector(".temp-min").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">14°C</span>
-    <span class="stat-description">Low</span>
-  </div>`;
-
-document.querySelector(".temp-max").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">22°C</span>
-    <span class="stat-description">High</span>
-  </div>`;
-
-document.querySelector(".feeling").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">20°C</span>
-    <span class="stat-description">Feels Like</span>
-  </div>`;
-
-document.querySelector(".humidity").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">68%</span>
-    <span class="stat-description">Humidity</span>
-  </div>`;
-
-document.querySelector(".wind").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">15 km/h</span>
-    <span class="stat-description">Wind Speed</span>
-  </div>`;
-
-document.querySelector(".clouds").innerHTML = `
-  <div class="stat-container">
-    <span class="stat">40%</span>
-    <span class="stat-description">Cloudiness</span>
-  </div>`;
+    document.querySelector(".temp-min .stat").innerText = temp_min + "°C";
+    document.querySelector(".temp-max .stat").innerText = temp_max + "°C";
+    document.querySelector(".feeling .stat").innerText = feels_like + "°C";
+    document.querySelector(".humidity .stat").innerText = humidity + "%";
+    document.querySelector(".wind .stat").innerText = speed + "km/h";
+    document.querySelector(".clouds .stat").innerText = all + "%";
     document.querySelector(".timezone").innerText = "Time now: " + getLocalTime(timezone);
     document.querySelector(".weather").classList.remove("loading");
   },
@@ -191,7 +162,7 @@ async function fetchCityImage(city) {
     const openverseData = await openverseRes.json();
     if (openverseData.results?.length > 0) {
       const randomIndex = Math.floor(Math.random() * openverseData.results.length);
-      console.log(`📸 Openverse: random image #${randomIndex + 1} of ${openverseData.results.length}`);
+      console.log(`Openverse: random image #${randomIndex + 1} of ${openverseData.results.length}`);
       return openverseData.results[randomIndex].url;
     }
   } catch (e) {

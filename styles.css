@@ -5,20 +5,30 @@ body {
     height: 100%;
     margin: 16px;
     font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
     font-style: normal;
-    font-variation-settings: "wdth" 100;
+    background-size: cover;
+    background-position: center;
 }
 .weather {
-    background: black;
+    background: rgba(0, 0, 0, 0.75);
     color: white;
-    opacity: 0.8;
     padding: 2em;
-    border-radius: 40px;
+    border-radius: 30px;
     width: 100%;
+    max-width: 900px;
     align-items: center;
-    margin: 1em;
-    border: 3px solid red;  
+    margin: 0.5em auto;
+}
+.current-temperature-container hr {
+  border: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  margin: 1em auto;
+  width: 80%;
 }
 .location-and-date {
   width: 100%;
@@ -28,26 +38,71 @@ body {
   font-size: 2em;
   font-weight: 600;
 }
+.search-btn svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+.search-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 1em auto 0.5em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+  text-align: left;
+}
+#label {
+  align-self: flex-start; 
+  margin-left: 0.3em;
+  font-size: 0.95em;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  border-radius: 5px;
+  font-weight: 500;
+  background: white;
+  color: black;
+ 
+}
+
 .search {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  gap: 0.4em;
+  width: 100%;
+  
 }
+
 .search-btn {
-    margin: 0.4em;
-    border-radius: 35px;
-    width: 2.5em;
-    height: 2.5em;
-    border: none;
-    outline: none;
+  border-radius: 10px;
+  border: none;
+  width: 2.8em;
+  height: 2.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+  cursor: pointer;
 }
-.search-bar {
-    border:none;
-    outline: none;
-    border-radius: 18px;
-    color:black;
-    font-family: inherit;
-    padding: 0.5em 1em;
+.search-btn:hover {
+  background: #eaeaea;
+}
+
+.search-bar,
+.select {
+  height: 2.8em;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6em 1em;
+  font-family: inherit;
+  font-size: 1em;
+  min-width: 160px;
+  flex: 1 1 220px;
+  box-sizing: border-box;
+  background: rgba(17, 17, 17, 0.795);
+  color: white;
 }
 
 .weather.loading {
@@ -65,95 +120,63 @@ body {
   left: 20px;
 }
 
-.select {
-    width: 12em;
-    border:none;
-    outline: none;
-    padding: 0.6em;
-    border-radius: 18px;
-    color:black;
-    font-family: inherit;
-    padding: 0.5em 1em;
-}
-
-#label {
-    display: block;
-    font-size: 0.8em;
-    margin-bottom: 0.3em;
-}
 .main-container {  
   display: flex;  
-  flex-wrap: wrap;  
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
 }  
-.hourly-weather {
-    width: 100%;
-}
-.daily-weather {
-    width: 100%;
+/* Section Headers */
+.hourly-header,
+.daily-header {
+  font-size: 1.4em;
+  margin-top: 1em;
+  text-align: left;
+  color: white;
 }
 .current-temperature {  
   display: flex;  
   justify-content: space-evenly;  
-  border: 3px solid red;  
 }  
 .current-temperature-container {  
   display: flex;  
-  margin-top: 0.25em;   
-  border: 3px solid red;  
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;  
+  align-items: center;
 }  
 .icon-container {    
-  text-align: center;  
-  border: 3px solid red;  
+  margin: auto;
 }  
-content-container {  
-  text-align: center;  
-  border: 3px solid white;  
+.content-container {  
+  text-align: left;  
+  margin: auto 0;
 }  
-  
-.icon {  
-  width: 6em;  
-  border: 3px solid red; 
-  
-}  
-.temp {  
-  font-size: 5em;  
-  font-weight: 300;  
-}  
-  
-.description {  
-  font-size: 1.125em; 
-  border: 3px solid red;   
-}
 .current-stats {  
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 2em;
   margin-top: 1em;
 }  
 
-@media screen and (min-width: 768px) {
-  .hourly-weather {
-    display: block;
-  }
+  
+.icon {  
+  width: 8em;   
+}  
+.temp {  
+  font-size: 4em;  
+  font-weight: 300; 
+}  
+  
+.description {  
+  font-size: 1.125em;  
 }
-@media screen and (min-width: 768px) {
-  .temp,
-  .current-stats {
-    width: 50%;
-  }
-}
-@media screen and (min-width: 1140px) {
-  .main-container {
-    width: 1120px;
-    margin: 16px auto;
-    font-size: 1.1em;
-  }
-}
+
 .stat-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left; 
+  width:fit-content;
 }
 .stat-description {
     font-size: 0.9em;
@@ -163,5 +186,125 @@ content-container {
   font-size: 1.2em;
   margin-bottom: 0.25em;
 }
+.timezone {
+  font-size: 0.9em;
+}
 
-.current-stats:
+@media (max-width: 600px) {
+  body {
+    margin: 8px;
+  }
+
+  .weather {
+    padding: 1.5em;
+    border-radius: 20px;
+  }
+
+  .temp {
+    font-size: 2.5em;
+  }
+
+  .city {
+    font-size: 1.5em;
+  }
+
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5em;
+  }
+.search-container {
+  margin-bottom: 0;
+}
+  .search-bar,
+  .select {
+    width: 100%;
+    max-height: 2.8em;
+    border-radius: 5px;
+  }
+  .search-btn {
+    width: 100%;
+    border-radius: 5px;
+  }
+   #label {
+    align-self: flex-start;
+    border-radius: 5px;
+  }
+  .current-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .search {
+    justify-content: left;
+  }
+  .temp {
+    font-size: 3.5em;
+  }
+
+  .current-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .temp {
+    font-size: 5em;
+  }
+
+  .current-temperature-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+  }
+
+  .current-temperature {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .current-stats {
+    justify-self: end;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .current-temperature-container hr {
+  border: 0;
+  width: 2px;
+  height: 150px;
+  margin: 0 auto;
+}
+.search {
+    justify-content: left;
+    gap: 0.5em; 
+  }
+
+  .search-bar,
+  .select {
+    flex: 1 1 auto;
+    max-width: 250px;    
+  }
+.search-container {
+    max-width: 900px;
+    margin: 1em auto 0.5em auto;
+  }
+.search-btn {
+  width: 3.3em;
+  height: 3.3em;
+}
+}
