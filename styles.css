@@ -243,20 +243,34 @@ body {
     margin: 0.5em 0em 2em 0em;
 }
 .daily-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  
+    display: flex;
+    flex-direction: column; /* cards stacked vertically */
+    gap: 1em;
 }
+
 .daily-card {
-   display: flex;
-   flex-wrap: wrap;
-   color: white;
-   background:var(--cards-color);
-   justify-content: flex-start;
-   gap: 3em;
-   align-items: center;
-   padding: 0.2em 1.5em 0.2em 1.5em;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* day, icon, high, low, wind, rain */
+    align-items: center;
+    gap: 1em;
+    color: white;
+    background: var(--cards-color);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    min-width: 250px;
+}
+
+.date-container,
+.daily-card-icon-container,
+.highest-temp-container,
+.lowest-temp-container,
+.wind-container,
+.rain-container {
+    display: flex;
+    flex-direction: column; /* value on top, prop underneath */
+    align-items: flex-start; /* left-aligned */
+    gap: 0.2em;
+    text-align: left;
 }
 
 .day, .lowest-temp, .highest-temp, .wind-speed, .rain {
@@ -264,14 +278,7 @@ body {
   font-size: 1.2em;
   
 }
-.date-container, .daily-card-icon-container, .highest-temp-container, .lowest-temp-container, .wind-container, .rain-container {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin: auto;
-  width: 5em;
-  height: max-content;
-}
+
 .prop, .date {
   font-size: 0.9em;
 }
@@ -350,6 +357,38 @@ body {
 .card {
     flex: 0 0 45%; /* width of each card */
 }
+ .daily-cards {
+    flex-direction: row;       /* cards side by side */
+    overflow-x: auto;          /* horizontal scroll */
+    flex-wrap: wrap;
+    gap: 1em;
+    padding-bottom: 0.5em;
+    
+}
+
+.daily-card {
+    display: grid;             /* still use grid! */
+    grid-template-columns: repeat(3, 1fr); /* same as desktop */
+    min-width: 250px;          /* ensures cards are readable */
+    width:100%;
+}
+
+.date-container,
+.daily-card-icon-container,
+.highest-temp-container,
+.lowest-temp-container,
+.wind-container,
+.rain-container {
+    align-items: center;       /* center inside the card for mobile */
+    text-align: center;
+    padding-bottom: 1em;
+}
+.date-container {
+  background-color: whitesmoke;
+  border-radius: 50px;
+  padding-top: 0.7em;
+  color:black;
+}
 }
 
 @media (min-width: 601px) and (max-width: 1023px) {
@@ -366,6 +405,26 @@ body {
   .current-stats {
     grid-template-columns: repeat(3, 1fr);
   }
+  .daily-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+    .daily-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+        min-width: 200px;
+        width:100%;
+    }
+.date-container,
+.daily-card-icon-container,
+.highest-temp-container,
+.lowest-temp-container,
+.wind-container,
+.rain-container {
+    padding-left: 1em;
+}
+
 }
 @media (min-width: 1024px) {
   .main-container {
@@ -423,4 +482,36 @@ body {
   width: 3.3em;
   height: 3.3em;
 }
+.daily-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.daily-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* adjust number of columns to match your props: day, icon, high, low, wind, rain */
+    align-items: center; /* vertically center values within each row */
+    gap: 1em;
+    color: white;
+    background: var(--cards-color);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    min-width: 250px;
+}
+
+.date-container,
+.daily-card-icon-container,
+.highest-temp-container,
+.lowest-temp-container,
+.wind-container,
+.rain-container {
+    display: flex;
+    flex-direction: column; /* value on top, prop underneath */
+    align-items: flex-start; /* left-align inside each column */
+    gap: 0.2em;
+    text-align: left;
+    padding-left: 1em;
+}
+
 }
