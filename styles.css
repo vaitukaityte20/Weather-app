@@ -71,12 +71,18 @@ body {
 
 .search {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center; 
   align-items: center;
   gap: 0.4em;
   width: 100%;
+  flex-wrap: nowrap; /* prevent stacking */
   
+}
+.input-wrapper {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
 }
 
 .search-btn {
@@ -94,8 +100,39 @@ body {
 .search-btn:hover {
   background: #eaeaea;
 }
+.search-bar {
+  flex: 1;
+  height: 2.8em;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6em 2.2em 0.6em 0.8em;
+  font-family: inherit;
+  font-size: 1em;
+  box-sizing: border-box;
+  background: var(--containers-color);
+  color: white;
+}
 
-.search-bar,
+.clear-btn {
+  position: absolute;
+  right: 9em; /* changed from inset-inline-end */
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+  line-height: 1;
+  z-index: 2;
+}
+
+.clear-btn:hover {
+  color: white;
+}
+
 .select {
   height: 2.8em;
   border: none;
@@ -104,8 +141,6 @@ body {
   font-family: inherit;
   font-size: 1em;
   min-width: 160px;
-  flex: 1 1 220px;
-  box-sizing: border-box;
   background: var(--containers-color);
   color: white;
 }
@@ -315,6 +350,7 @@ body {
     flex-direction: column;
     align-items: stretch;
     gap: 0.5em;
+    flex-wrap: wrap;
   }
 .search-container {
   margin-bottom: 0;
@@ -329,6 +365,10 @@ body {
     width: 100%;
     border-radius: 5px;
   }
+  .clear-btn {
+    right: 0.5em;
+  }
+  
    #label {
     align-self: flex-start;
     border-radius: 5px;
@@ -397,6 +437,7 @@ body {
   }
   .search {
     justify-content: left;
+    flex-wrap: wrap;
   }
   .temp {
     font-size: 3.5em;
@@ -423,6 +464,13 @@ body {
 .wind-container,
 .rain-container {
     padding-left: 1em;
+}
+
+  .search-bar {
+    padding-right: 2.4em; /* make sure the button fits */
+  }
+  .clear-btn {
+  right: 0.5em; /* changed from inset-inline-end */
 }
 
 }
@@ -473,6 +521,10 @@ body {
   .select {
     flex: 1 1 auto;
     max-width: 250px;    
+
+  }
+  .input-wrapper {
+    max-width: 250px; /* gives input more room on desktop */
   }
 .search-container {
     max-width: 900px;
@@ -481,6 +533,9 @@ body {
 .search-btn {
   width: 3.3em;
   height: 3.3em;
+}
+.clear-btn {
+  right: 0.5em; 
 }
 .daily-cards {
     display: flex;

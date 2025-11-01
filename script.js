@@ -239,6 +239,20 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
     weather.search();
   }
 });
+const searchInput = document.getElementById("search-bar");
+const clearBtn = document.getElementById("clear-btn");
+
+// Show/hide clear button based on input value
+searchInput.addEventListener("input", () => {
+  clearBtn.style.display = searchInput.value ? "block" : "none";
+});
+
+// Clear input when clicking X
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+  searchInput.focus();
+});
 
 // Default example
 weather.fetchWeather("Vilnius");
