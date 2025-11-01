@@ -19,7 +19,7 @@ A responsive weather app built with HTML, CSS, and JavaScript. It shows current 
 - Unsplash, Pexels, Openverse APIs for background images
 
 ##  Live Demo
-👉 [Live Demo](https://vaitukaityte20.github.io/Product-Landing/)
+👉 [Live Demo](https://github.com/vaitukaityte20/Weather-app.git)
 
 ## Author
 
