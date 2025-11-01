@@ -20,7 +20,7 @@ A responsive weather app built with HTML, CSS, and JavaScript. It shows current 
 
 ##  Live Demo
 
-👉 [Live Demo](https://github.com/vaitukaityte20/Weather-app.git)
+👉 [Live Demo](https://vaitukaityte20.github.io/Weather-app/)
 
 ## Author
 
